@@ -1,9 +1,11 @@
 import React, { useState} from 'react';
 import './App.css';
+import Buttons from "./Components/Buttons";
+import Score from "./Components/Score";
+
+export type typeOfNumber = number;
 
 function App() {
-
-    type typeOfNumber = number;
 
     let [state, setState] = useState<typeOfNumber>(0)
 
@@ -15,38 +17,12 @@ function App() {
         setState(0)
     }
 
-    const classButtonReset = state === 0 ? "lastButton fb disabledButton" : "lastButton fb";
-    const classButtonInc =  state >= 5 ? "firstButton fb disabledButton" : "firstButton fb";
-    const colorText= state === 5 ? "redColor" : "";
-
-    const isIncDisabled = state >= 5;
-    const isResetDisabled = !state;
-
     return (
         <div className="App">
             <div className={"BigSquare"}>
                 <div className={"Square"}>
-                    <div className={"Table"}>
-                        <span className={colorText}>
-                            {state}
-                        </span>
-                    </div>
-                    <div className={"ButtonsBlock"}>
-                        <button
-                            onClick={addNumb}
-                            className={classButtonInc}
-                            disabled={isIncDisabled}
-                        >
-                            inc
-                        </button>
-                        <button
-                            onClick={resetNumb}
-                            className={classButtonReset}
-                            disabled={isResetDisabled}
-                        >
-                            reset
-                        </button>
-                    </div>
+                    <Score state={state}/>
+                    <Buttons state={state} addNumb={addNumb} resetNumb={resetNumb} />
                 </div>
             </div>
         </div>
