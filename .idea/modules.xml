@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/first_month_exam.iml" filepath="$PROJECT_DIR$/.idea/first_month_exam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Counter_and_SuperCounter.iml" filepath="$PROJECT_DIR$/.idea/Counter_and_SuperCounter.iml" />
     </modules>
   </component>
 </project>

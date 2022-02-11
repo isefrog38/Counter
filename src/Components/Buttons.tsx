@@ -1,4 +1,6 @@
 import React from 'react';
+import {Button} from "./ButtonClear/Button";
+import {ButtonsBlock} from "./StyledComp/Styles";
 
 type ButtonsType = {
     state: number
@@ -8,30 +10,15 @@ type ButtonsType = {
 
 const Buttons = ({state, addNumb, resetNumb}: ButtonsType ) => {
 
-    const classButtonReset = state === 0 ? "lastButton fb disabledButton" : "lastButton fb";
-    const classButtonInc =  state >= 5 ? "firstButton fb disabledButton" : "firstButton fb";
-
     const isIncDisabled = state >= 5;
     const isResetDisabled = !state;
 
     return (
         <>
-            <div className={"ButtonsBlock"}>
-                <button
-                    onClick={addNumb}
-                    className={classButtonInc}
-                    disabled={isIncDisabled}
-                >
-                    inc
-                </button>
-                <button
-                    onClick={resetNumb}
-                    className={classButtonReset}
-                    disabled={isResetDisabled}
-                >
-                    reset
-                </button>
-            </div>
+            <ButtonsBlock>
+                <Button title={"Inc"} onClickHandler={addNumb} disabled={isIncDisabled}/>
+                <Button title={"Reset"} onClickHandler={resetNumb} disabled={isResetDisabled}/>
+            </ButtonsBlock>
         </>
     );
 };

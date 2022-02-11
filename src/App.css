@@ -2,95 +2,9 @@
     align-items: center;
     width: 100%;
     height: 1000px;
-    background-color: rgba(68, 68, 68, 1);
-}
-
-.BigSquare {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid #35c2e0;
-    width: 70%;
-    height: 35%;
-    border-radius: 5px;
-    padding: 5%;
-}
-
-.Square {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 105%;
-}
-
-.Table {
-    width: 100%;
-    height: 500%;
-    background-color: #35c2e0;
-    border-radius: 15px;
-    color: black;
-    font-weight: bold;
-    font-size: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.ButtonsBlock {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    border: 3px solid #35c2e0;
-    padding-top: 20px;
-}
-
-
-.firstButton {
-    margin: 0 15px 15px 0;
-    border: none;
-    border-radius: 10px;
-    width: 40%;
-    height: 70px;
-    color: black;
-    font-size: 50px;
-    background-color: #35c2e0;
-    font-weight: bold;
-}
-
-.lastButton {
-    margin: 0 15px 15px 0;
-    border: none;
-    border-radius: 10px;
-    width: 40%;
-    height: 70px;
-    color: black;
-    font-size: 50px;
-    background-color: #35c2e0;
-    font-weight: bold;
+    background-color: azure;
 }
 
 .redColor {
-    color: red;
-}
-
-.disabledButton {
-    opacity: 0.3;
-}
-
-.fb:hover {
-    border: 2px solid white;
-}
-
-.fb:focus {
-    border: 2px solid white;
-}
-
-.fb:active {
-    background-color: rgba(46,51,48,1) ;
-    color: white;
+    color: darkred;
 }
