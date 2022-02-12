@@ -11,16 +11,15 @@ type OldCounterType ={
     disabledRes: boolean
     disabledInc: boolean
     lastNumb: boolean
-    textError: any
 }
 
-export function OldCounter({textError, addNumb, resetNumb, number, disabledRes, disabledInc, lastNumb}: OldCounterType) {
+export function OldCounter({addNumb, resetNumb, number, disabledRes, disabledInc, lastNumb}: OldCounterType) {
 
     return (
         <div className={"Block"}>
             <MainBlock>
                 <Square>
-                    <Score textError={textError} number={number} lastNumb={lastNumb}/>
+                    <Score number={number} lastNumb={lastNumb}/>
                     <ButtonsBlock>
                         <Button title={"Inc"} onClickHandler={addNumb} disabled={disabledInc} propsWidth={40}/>
                         <Button title={"Reset"} onClickHandler={resetNumb} disabled={disabledRes} propsWidth={40}/>

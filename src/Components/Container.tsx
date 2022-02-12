@@ -2,6 +2,12 @@ import React, {useEffect, useState} from 'react';
 import '../App.css';
 import {OldCounter} from "./OldCounter";
 import {NewCounter} from "./NewCounter";
+import styled from "styled-components";
+
+export const ErrorText = styled.h3`
+  color: red;
+  font-size: 30px;
+`
 
 export const Container = () => {
 
@@ -39,13 +45,13 @@ export const Container = () => {
     }, [number])
 
     const onChangeHandlerMax = (numb: number) => {
-        if ( numb > 0 ) {
-        setMaxValue(numb);
-        setDisabled(false);
+        if (numb > 0) {
+            setMaxValue(numb);
+            setDisabled(false);
         }
     }
     const onChangeHandlerStart = (numb: number) => {
-        if ( numb > -1 ) {
+        if (numb > -1) {
             setStartValue(numb);
             setDisabled(false);
         }
@@ -60,17 +66,20 @@ export const Container = () => {
     const LastNumber = number < maxValue;
     const DisabledIncButton = number >= maxValue;
     const DisabledResetButton = number <= startValue;
-    const DisabledSetButton = number === startValue ;
+    const DisabledSetButton = number === startValue;
 
-    const TextError = () => {
-        if (maxValue <= startValue) return "Number is not valid";
-        if (startValue < 0) return "Start value is not valid";
-    }
+/*    const Error:any = () => {
+        if (maxValue <= startValue) return 1;
+        if (startValue < 0) return 1;
+    }*/
 
     return (
         <div className={"Main_Block"}>
-            <NewCounter  addSet={addSet} setMinV={onChangeHandlerStart} setMaxV={onChangeHandlerMax} disabledSet={DisabledSetButton}/>
-            <OldCounter textError={TextError} number={number} addNumb={Inc} resetNumb={Reset} disabledRes={DisabledResetButton} disabledInc={DisabledIncButton} lastNumb={LastNumber}/>
+            {/*{ Error ? <ErrorText>Error Number is not Valid</ErrorText> : <h3>Set Number</h3>}*/}
+            <NewCounter maxValue={maxValue} startValue={startValue} addSet={addSet} setMinV={onChangeHandlerStart}
+                        setMaxV={onChangeHandlerMax} disabledSet={DisabledSetButton}/>
+            <OldCounter number={number} addNumb={Inc} resetNumb={Reset} disabledRes={DisabledResetButton}
+                        disabledInc={DisabledIncButton} lastNumb={LastNumber}/>
         </div>
     );
 }

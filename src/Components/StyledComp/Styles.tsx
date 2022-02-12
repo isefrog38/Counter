@@ -11,7 +11,8 @@ export const MainBlock = styled.div<MainBlockType>`
     margin-right: -50%;
     transform: translate(-50%, -50%);
     border: 3px solid palevioletred;
-    width: ${({wp}) => wp ? wp : 60}%;
+    max-width: 60%;
+    width:60%;
     height: 40%;
     border-radius: 5px;
     padding: 5%;
@@ -45,8 +46,10 @@ export const ButtonsBlock = styled.div`
 export const Square = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 600px;
   width: 100%;
   height: 105%;
+  margin: auto;
 `
 
 

@@ -13,7 +13,7 @@ export const TextStyled = styled.span<ColorType>`
     font-size: 80px;
     color: ${({cp}) => cp ? cp : `white` };
 `
-export const ErrorText = styled.h4<TextType>`
+export const ErrorText = styled.div<TextType>`
     color: red;
     font-size: 40px;
 `
@@ -21,21 +21,18 @@ export const ErrorText = styled.h4<TextType>`
 type ScoreType = {
     number: number
     lastNumb: boolean
-    textError: any
 }
 
-const Score = ({textError, number, lastNumb}: ScoreType) => {
+const Score = ({number, lastNumb}: ScoreType) => {
 
     let color = !lastNumb ? "red" : "white";
-    let componentTag = textError ?  <ErrorText>{titleError}</ErrorText> : <TextStyled cp={color} >
-        {number}
-    </TextStyled>;
+
 
 
     return (
         <>
             <Table>
-                {componentTag}
+                <TextStyled cp={color} >{number}</TextStyled>
             </Table>
         </>
     );

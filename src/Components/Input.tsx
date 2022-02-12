@@ -26,16 +26,16 @@ export const InputStyled = styled.input`
 
 type InputType = {
     setV: (e: number) => void
-
+    number: number
 }
 
-export const Input = ({setV, }: InputType) => {
+export const Input = ({number, setV}: InputType) => {
 
     const ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => setV(+e.currentTarget.value);
 
     return (
         <span className={"Input_Block"}>
-            <InputStyled type="number" onChange={ChangeEventHandler}  />
+            <InputStyled type="number" onChange={ChangeEventHandler} value={number} />
         </span>
     );
 }

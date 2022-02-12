@@ -5,21 +5,23 @@ import {Button} from "./ButtonClear/Button";
 import {Input} from "./Input";
 
 type NewCounterType ={
+    startValue: number
+    maxValue: number
     addSet: () => void
     setMinV : (e: number) => void
     setMaxV : (e: number) => void
     disabledSet: boolean
 }
 
-export const NewCounter = ({ addSet, setMinV, setMaxV, disabledSet}: NewCounterType) => {
+export const NewCounter = ({maxValue, startValue, addSet, setMinV, setMaxV, disabledSet}: NewCounterType) => {
 
     return (
         <div className={"Block"}>
-            <MainBlock wp={80}>
+            <MainBlock >
                 <Square>
                     <Table >
-                        <h1>Set Max Value : </h1><Input  setV={setMaxV} />
-                        <h1>Set Min Value : </h1><Input  setV={setMinV} />
+                        <h1>Set Max Value : </h1><Input number={maxValue} setV={setMaxV} />
+                        <h1>Set Min Value : </h1><Input number={startValue} setV={setMinV} />
                     </Table>
                     <ButtonsBlock>
                         <Button title={"Set"} onClickHandler={addSet} disabled={disabledSet} propsWidth={70}/>
