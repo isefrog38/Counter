@@ -5,25 +5,25 @@ import {Button} from "./ButtonClear/Button";
 import {ButtonsBlock} from "./StyledComp/Styles";
 
 type OldCounterType ={
-    state: number
+    number: number
     addNumb: () => void
     resetNumb: () => void
+    disabledRes: boolean
+    disabledInc: boolean
+    lastNumb: boolean
+    textError: any
 }
 
-export function OldCounter({state, addNumb, resetNumb}: OldCounterType) {
-
-    const isIncDisabled = state >= 5;
-    const isResetDisabled = !state;
+export function OldCounter({textError, addNumb, resetNumb, number, disabledRes, disabledInc, lastNumb}: OldCounterType) {
 
     return (
         <div className={"Block"}>
             <MainBlock>
                 <Square>
-                    <Score state={state}/>
-                    {/*<Buttons state={state} addNumb={addNumb} resetNumb={resetNumb} />*/}
+                    <Score textError={textError} number={number} lastNumb={lastNumb}/>
                     <ButtonsBlock>
-                        <Button title={"Inc"} onClickHandler={addNumb} disabled={isIncDisabled} propsWidth={40}/>
-                        <Button title={"Reset"} onClickHandler={resetNumb} disabled={isResetDisabled} propsWidth={40}/>
+                        <Button title={"Inc"} onClickHandler={addNumb} disabled={disabledInc} propsWidth={40}/>
+                        <Button title={"Reset"} onClickHandler={resetNumb} disabled={disabledRes} propsWidth={40}/>
                     </ButtonsBlock>
                 </Square>
             </MainBlock>

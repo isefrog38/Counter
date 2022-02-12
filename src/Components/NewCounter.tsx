@@ -1,27 +1,28 @@
 import React from 'react';
-import {MainBlock, Square} from "./StyledComp/Styles";
-import Score from "./Score";
+import {MainBlock, Square, Table, ButtonsBlock} from "./StyledComp/Styles";
 import {Button} from "./ButtonClear/Button";
-import {ButtonsBlock} from "./StyledComp/Styles";
+
+import {Input} from "./Input";
 
 type NewCounterType ={
-    state: number
-    addNumb: () => void
-    resetNumb: () => void
+    addSet: () => void
+    setMinV : (e: number) => void
+    setMaxV : (e: number) => void
+    disabledSet: boolean
 }
 
-export const NewCounter = ({state, addNumb, resetNumb}: NewCounterType) => {
-
-    const isIncDisabled = state >= 5;
-    const isResetDisabled = !state;
+export const NewCounter = ({ addSet, setMinV, setMaxV, disabledSet}: NewCounterType) => {
 
     return (
         <div className={"Block"}>
-            <MainBlock>
+            <MainBlock wp={80}>
                 <Square>
-                    <Score state={state}/>
+                    <Table >
+                        <h1>Set Max Value : </h1><Input  setV={setMaxV} />
+                        <h1>Set Min Value : </h1><Input  setV={setMinV} />
+                    </Table>
                     <ButtonsBlock>
-                        <Button title={"Set"} onClickHandler={resetNumb} disabled={!isResetDisabled} propsWidth={70}/>
+                        <Button title={"Set"} onClickHandler={addSet} disabled={disabledSet} propsWidth={70}/>
                     </ButtonsBlock>
                 </Square>
             </MainBlock>
