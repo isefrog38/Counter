@@ -7,7 +7,7 @@ export const MainBlock = styled.div`
     margin-right: -50%;
     transform: translate(-50%, -50%);
     border: 3px solid palevioletred;
-    width: 70%;
+    width: 60%;
     height: 40%;
     border-radius: 5px;
     padding: 5%;

@@ -5,6 +5,17 @@
     background-color: azure;
 }
 
+.Main_Block{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.Block{
+    width: 100%;
+    height: 100%;
+}
+
 .redColor {
     color: darkred;
 }

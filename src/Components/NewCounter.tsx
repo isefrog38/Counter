@@ -1,7 +1,8 @@
 import React from 'react';
 import {MainBlock, Square} from "./StyledComp/Styles";
 import Score from "./Score";
-import Buttons from "./Buttons";
+import {Button} from "./ButtonClear/Button";
+import {ButtonsBlock} from "./StyledComp/Styles";
 
 type NewCounterType ={
     state: number
@@ -10,12 +11,18 @@ type NewCounterType ={
 }
 
 export const NewCounter = ({state, addNumb, resetNumb}: NewCounterType) => {
+
+    const isIncDisabled = state >= 5;
+    const isResetDisabled = !state;
+
     return (
-        <div>
+        <div className={"Block"}>
             <MainBlock>
                 <Square>
                     <Score state={state}/>
-                    <Buttons state={state} addNumb={addNumb} resetNumb={resetNumb} />
+                    <ButtonsBlock>
+                        <Button title={"Set"} onClickHandler={resetNumb} disabled={!isResetDisabled} propsWidth={70}/>
+                    </ButtonsBlock>
                 </Square>
             </MainBlock>
         </div>

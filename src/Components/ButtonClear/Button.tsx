@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from "styled-components";
 
-const ButtonStyled = styled.button`
+type PropsTypeSC = {
+    pw: number
+}
+
+const ButtonStyled = styled.button<PropsTypeSC>`
   color: palevioletred;
   background-color: white;
   padding: 5px 40px;
   border: 1px solid palevioletred;
   border-radius: 15px;
-  width: 40%;
+  width: ${({pw}) => pw ?  pw : 40}%;
   height: 70px;
   font-size: 40px;
   font-weight: bold;
@@ -31,15 +35,17 @@ const ButtonStyled = styled.button`
 `
 
 type Buttons = {
+    propsWidth: number
     title: string
     onClickHandler: () => void
     disabled?: boolean
 }
 
-export const Button = ({title, onClickHandler, disabled}: Buttons) => {
+export const Button = ({title, onClickHandler, disabled, propsWidth}: Buttons) => {
     return (
         <>
-            <ButtonStyled   disabled={disabled}
+            <ButtonStyled   pw={propsWidth}
+                            disabled={disabled}
                             onClick={onClickHandler}>
                 {title}
             </ButtonStyled>

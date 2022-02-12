@@ -20,9 +20,9 @@ export const Container = () => {
 
 
     return (
-        <div className="App">
-            <OldCounter state={state} addNumb={addNumb} resetNumb={resetNumb}/>
+        <div className={"Main_Block"}>
             <NewCounter state={state} addNumb={addNumb} resetNumb={resetNumb}/>
+            <OldCounter state={state} addNumb={addNumb} resetNumb={resetNumb}/>
         </div>
     );
 }
