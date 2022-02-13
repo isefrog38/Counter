@@ -13,7 +13,7 @@ type NewCounterType ={
     disabledSet: boolean
 }
 
-export const NewCounter = ({maxValue, startValue, addSet, setMinV, setMaxV, disabledSet}: NewCounterType) => {
+export const Setter = ({maxValue, startValue, addSet, setMinV, setMaxV, disabledSet}: NewCounterType) => {
 
     return (
         <div className={"Block"}>

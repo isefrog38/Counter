@@ -10,16 +10,20 @@ type OldCounterType ={
     resetNumb: () => void
     disabledRes: boolean
     disabledInc: boolean
-    lastNumb: boolean
+    error: boolean
+    maxValue: number
+    errorMessage: string
 }
 
-export function OldCounter({addNumb, resetNumb, number, disabledRes, disabledInc, lastNumb}: OldCounterType) {
+export function Counter({maxValue, error, addNumb, resetNumb, number, disabledRes, disabledInc, errorMessage}: OldCounterType) {
+
+
 
     return (
         <div className={"Block"}>
             <MainBlock>
                 <Square>
-                    <Score number={number} lastNumb={lastNumb}/>
+                    <Score maxValue={maxValue} error={error} number={number} errorMessage={errorMessage}/>
                     <ButtonsBlock>
                         <Button title={"Inc"} onClickHandler={addNumb} disabled={disabledInc} propsWidth={40}/>
                         <Button title={"Reset"} onClickHandler={resetNumb} disabled={disabledRes} propsWidth={40}/>
