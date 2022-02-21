@@ -15,7 +15,7 @@ type OldCounterType ={
     errorMessage: string
 }
 
-export function Counter({maxValue, error, addNumb, resetNumb, number, disabledRes, disabledInc, errorMessage}: OldCounterType) {
+export function Counter({maxValue, error, addNumb, resetNumb, number, disabledRes, disabledInc, errorMessage, }: OldCounterType) {
 
 
 

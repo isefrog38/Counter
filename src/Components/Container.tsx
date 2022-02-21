@@ -13,9 +13,9 @@ export const ErrorText = styled.h3`
 export const Container = () => {
 
     const [number, setNumber] = useState<number>(0);
-    const [maxValue, setMaxValue] = useState<number>(5);
+    const [maxValue, setMaxValue] = useState<number>(1);
     const [startValue, setStartValue] = useState<number>(0);
-    const [disabled, setDisabled] = useState(true);
+    const [disabled, setDisabled] = useState(false);
     const [error, setError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
@@ -79,7 +79,7 @@ export const Container = () => {
     const Inc = () => number < maxValue && setNumber(number + 1);
     const Reset = () => setNumber(startValue);
 
-    const DisabledIncButton = number === maxValue ;
+    const DisabledIncButton = number >= maxValue;
     const DisabledResetButton = number <= startValue;
     const DisabledSetButton = startValue >= maxValue;
 
