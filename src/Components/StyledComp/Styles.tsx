@@ -5,23 +5,23 @@ type MainBlockType = {
 }
 
 export const MainBlock = styled.div<MainBlockType>`
-    position: relative;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid palevioletred;
-    max-width: 60%;
-    width:60%;
-    height: 40%;
-    border-radius: 5px;
-    padding: 5%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #ff85ad;
+  max-width: 60%;
+  width: 60%;
+  height: 40%;
+  border-radius: 5px;
+  padding: 5%;
 `
 
 export const Table = styled.div`
   width: 100%;
   height: 500%;
-  background-color: palevioletred;
+  background-color: #ff85ad;
   border-radius: 15px;
   color: white;
   font-weight: bold;
@@ -39,7 +39,7 @@ export const ButtonsBlock = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  border: 3px solid palevioletred;
+  border: 3px solid #ff85ad;
   padding-top: 20px;
 `
 
