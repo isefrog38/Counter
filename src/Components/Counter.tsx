@@ -3,33 +3,34 @@ import {MainBlock, Square} from "./StyledComp/Styles";
 import Score from "./Score";
 import {Button} from "./ButtonClear/Button";
 import {ButtonsBlock} from "./StyledComp/Styles";
+import {useSelector} from "react-redux";
+import {StateType} from "../redux/store";
+import {InitialStateType} from "../redux/Reducer";
 
-type OldCounterType ={
-    number: number
-    addNumb: () => void
-    resetNumb: () => void
-    disabledRes: boolean
-    disabledInc: boolean
+type CounterType ={
+    changeValue: () => void
+    resetValue: () => void
+    value: number ,
+    maxValue: number,
+    disableRES: boolean
+    disableINC: boolean
     error: boolean
-    maxValue: number
     errorMessage: string
 }
 
-export function Counter({maxValue, error, addNumb, resetNumb, number, disabledRes, disabledInc, errorMessage, }: OldCounterType) {
-
+export function Counter({changeValue, resetValue, maxValue, value, disableRES, disableINC, errorMessage, error}: CounterType) {
 
 
     return (
         <div className={"Block"}>
             <MainBlock>
                 <Square>
-                    <Score maxValue={maxValue} error={error} number={number} errorMessage={errorMessage}/>
+                    <Score maxValue={maxValue} error={error} value={value} errorMessage={errorMessage}/>
                     <ButtonsBlock>
-                        <Button title={"Inc"} onClickHandler={addNumb} disabled={disabledInc} propsWidth={40}/>
-                        <Button title={"Reset"} onClickHandler={resetNumb} disabled={disabledRes} propsWidth={40}/>
+                        <Button title={"Inc"} onClickHandler={changeValue} disabled={disableINC} propsWidth={40}/>
+                        <Button title={"Reset"} onClickHandler={resetValue} disabled={disableRES} propsWidth={40}/>
                     </ButtonsBlock>
                 </Square>
             </MainBlock>
         </div>
-    );
-}
+    )}

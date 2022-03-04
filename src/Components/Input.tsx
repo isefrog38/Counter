@@ -2,6 +2,24 @@ import React, {ChangeEvent} from 'react';
 import "../App.css"
 import styled from "styled-components";
 
+
+type InputType = {
+    setValue: (e: number) => void
+    number: number
+}
+
+export const Input = ({number, setValue}: InputType) => {
+
+    const ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => setValue(+e.currentTarget.value);
+
+    return (
+        <span className={"Input_Block"}>
+            <InputStyled type="number" onChange={ChangeEventHandler} value={number} />
+        </span>
+    );
+}
+
+
 export const InputStyled = styled.input`
   padding: 5px 0 5px 15px;
   font-size: 20px;
@@ -23,19 +41,3 @@ export const InputStyled = styled.input`
     color: white;
   }
 `
-
-type InputType = {
-    setV: (e: number) => void
-    number: number
-}
-
-export const Input = ({number, setV}: InputType) => {
-
-    const ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => setV(+e.currentTarget.value);
-
-    return (
-        <span className={"Input_Block"}>
-            <InputStyled type="number" onChange={ChangeEventHandler} value={number} />
-        </span>
-    );
-}

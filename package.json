@@ -2,7 +2,7 @@
   "name": "first_month_exam",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://isefrog38.github.io/exam_file",
+  "homepage": "https://isefrog38.github.io/Counter",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -14,9 +14,12 @@
     "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
     "styled-components": "^5.3.3",
     "typescript": "^4.4.2",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {

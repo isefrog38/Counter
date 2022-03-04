@@ -1,10 +1,30 @@
 import React from 'react';
 import styled from "styled-components";
 
-type PropsTypeSC = {
-    pw: number
+
+type Buttons = {
+    propsWidth: number
+    title: string
+    onClickHandler: () => void
+    disabled?: boolean
 }
 
+export const Button = ({title, onClickHandler, disabled, propsWidth}: Buttons) => {
+    return (
+        <>
+            <ButtonStyled   pw={propsWidth}
+                            disabled={disabled}
+                            onClick={onClickHandler}>
+                {title}
+            </ButtonStyled>
+        </>
+    );
+};
+
+
+type PropsTypeSC = {
+    pw: number
+};
 const ButtonStyled = styled.button<PropsTypeSC>`
   color: palevioletred;
   background-color: white;
@@ -32,24 +52,4 @@ const ButtonStyled = styled.button<PropsTypeSC>`
     color: palevioletred;
     cursor: not-allowed;
   }
-`
-
-type Buttons = {
-    propsWidth: number
-    title: string
-    onClickHandler: () => void
-    disabled?: boolean
-}
-
-export const Button = ({title, onClickHandler, disabled, propsWidth}: Buttons) => {
-    return (
-        <>
-            <ButtonStyled   pw={propsWidth}
-                            disabled={disabled}
-                            onClick={onClickHandler}>
-                {title}
-            </ButtonStyled>
-        </>
-    );
-};
-
+`;

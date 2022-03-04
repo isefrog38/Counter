@@ -1,108 +1,85 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import '../App.css';
 import {Counter} from "./Counter";
 import {Setter} from "./Setter";
 import styled from "styled-components";
-import {start} from "repl";
+import {useDispatch, useSelector} from "react-redux";
+import {StateType} from "../redux/store";
+import {InitialStateType} from "../redux/Reducer";
+import {
+    changeMaxValueAC,
+    changeMinValueAC,
+    changeValueAC,
+    resetValueAC, setErrorAC,
+    setValueAC
+} from "../redux/Actions";
+import {loadState} from "../redux/localstorage";
+
+
+export const Container = () => {
+
+    let dispatch = useDispatch();
+    let state = useSelector<StateType, InitialStateType>(state => state.counterData);
+
+    useEffect(() => {
+       const state = loadState()
+
+        if (state) {
+            setMinValue(state.min)
+            setMaxValue(state.max)
+            setValue()
+        }
+    }, [])
+
+    const setMaxValue = (max: number) => {
+            dispatch(changeMaxValueAC(max))
+    }
+    const setMinValue = (min: number) => {
+            dispatch(changeMinValueAC(min))
+    }
+    const changeValue = () => {
+            dispatch(changeValueAC())
+    }
+    const resetValue = () => {
+        dispatch(resetValueAC())
+    }
+    const setValue = () => {
+        dispatch(setValueAC())
+    }
+
+    let ErrorMessage = state.max <= state.min || state.max < 0 || state.min < 0 ? "Error , invalid value" : 'Please click on the "Set" button' ;
+
+    let disabledSet = state.max <= state.min ;
+    let IncDisabled = state.value === state.max || state.max <= state.min || state.error;
+    let ResetDisabled = state.value === state.min || state.max <= state.min || state.error;
+
+
+    return (
+        <div className={"Main_Block"}>
+            <Setter
+                setMaxValue={setMaxValue}
+                setMinValue={setMinValue}
+                setValue={setValue}
+                disableSET={disabledSet}
+                maxValue={state.max}
+                minValue={state.min}
+            />
+            <Counter
+                changeValue={changeValue}
+                resetValue={resetValue}
+                maxValue={state.max}
+                value={state.value}
+                disableINC={IncDisabled}
+                disableRES={ResetDisabled}
+                errorMessage={ErrorMessage}
+                error={state.error}
+            />
+        </div>
+    );
+}
+
 
 export const ErrorText = styled.h3`
   color: red;
   font-size: 30px;
 `
-
-export const Container = () => {
-
-    const [number, setNumber] = useState<number>(0);
-    const [maxValue, setMaxValue] = useState<number>(1);
-    const [startValue, setStartValue] = useState<number>(0);
-    const [disabled, setDisabled] = useState(false);
-    const [error, setError] = useState<boolean>(false);
-    const [errorMessage, setErrorMessage] = useState<string>('');
-
-    useEffect(() => {
-        let maxValueAsString = localStorage.getItem('countMaxValue')
-        if (maxValueAsString) {
-            setMaxValue(JSON.parse(maxValueAsString))
-        }
-
-        let startValueAsString = localStorage.getItem('countStartValue')
-        if (startValueAsString) {
-            setStartValue(JSON.parse(startValueAsString))
-        }
-        let numberAsString = localStorage.getItem('countNumbValue')
-        if (numberAsString) {
-            setNumber(JSON.parse(numberAsString))
-        }
-    }, [])
-
-
-    const setLocalStoreMaxValue = () => {
-        localStorage.setItem('countMaxValue', JSON.stringify(maxValue))
-    }
-
-    const setLocalStoreStartValue = () => {
-        localStorage.setItem('countStartValue', JSON.stringify(startValue))
-    }
-
-    useEffect(() => {
-        localStorage.setItem('countNumbValue', JSON.stringify(number))
-    }, [number])
-
-    const onChangeHandlerMax = (numb: number) => {
-        if (numb >= 0) setMaxValue(numb);
-        if (numb > 1) setDisabled(!disabled)
-    }
-    const onChangeHandlerStart = (numb: number) => {
-        if (numb >= 0) setStartValue(numb);
-
-        //if (numb >= maxValue) setError(true);
-        if (numb > -1) setDisabled(!disabled);
-    }
-
-    useEffect(()=> {
-        if(startValue >= maxValue) {
-            setErrorMessage('Error , invalid value')
-        } else {
-            setErrorMessage('Please click on the "Set" button')
-        }
-        setError(true)
-    },[startValue, maxValue])
-
-    const addSet = () => {
-        setNumber(startValue);
-        setError(false);
-        setDisabled(disabled);
-        setLocalStoreMaxValue();
-        setLocalStoreStartValue();
-    }
-
-    const Inc = () => number < maxValue && setNumber(number + 1);
-    const Reset = () => setNumber(startValue);
-
-    const DisabledIncButton = number >= maxValue;
-    const DisabledResetButton = number <= startValue;
-    const DisabledSetButton = startValue >= maxValue;
-
-    return (
-        <div className={"Main_Block"}>
-            <Setter
-                maxValue={maxValue}
-                startValue={startValue}
-                addSet={addSet}
-                setMinV={onChangeHandlerStart}
-                setMaxV={onChangeHandlerMax}
-                disabledSet={DisabledSetButton}
-            />
-            <Counter
-                maxValue={maxValue}
-                error={error}
-                number={number}
-                addNumb={Inc}
-                resetNumb={Reset}
-                disabledRes={DisabledResetButton}
-                disabledInc={DisabledIncButton}
-                errorMessage={errorMessage}
-            />
-        </div>
-    );
-}
