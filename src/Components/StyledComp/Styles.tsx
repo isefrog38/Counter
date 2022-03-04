@@ -13,7 +13,7 @@ export const MainBlock = styled.div<MainBlockType>`
   border: 2px dashed #ffffff;
   max-width: 60%;
   width: 60%;
-  height: 40%;
+  height: auto;
   border-radius: 20px;
   padding: 5%;
   z-index: 3;
@@ -25,7 +25,7 @@ export const MainBlock = styled.div<MainBlockType>`
 
 export const Table = styled.div`
   width: 100%;
-  height: 500%;
+  min-height: 300px;
   background-color: transparent;
   border-radius: 15px;
   color: white;
