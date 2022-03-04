@@ -10,18 +10,23 @@ export const MainBlock = styled.div<MainBlockType>`
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  border: 3px solid #ff85ad;
+  border: 2px dashed #ffffff;
   max-width: 60%;
   width: 60%;
   height: 40%;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 5%;
+  z-index: 3;
+  
+  &:hover {
+    border: 3px solid #ffffff;
+  }
 `
 
 export const Table = styled.div`
   width: 100%;
   height: 500%;
-  background-color: #ff85ad;
+  background-color: transparent;
   border-radius: 15px;
   color: white;
   font-weight: bold;
@@ -31,6 +36,7 @@ export const Table = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  z-index: 3;
 `
 
 export const ButtonsBlock = styled.div`
@@ -39,7 +45,7 @@ export const ButtonsBlock = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  border: 3px solid #ff85ad;
+  border: 2px dashed #ffffff;
   padding-top: 20px;
 `
 

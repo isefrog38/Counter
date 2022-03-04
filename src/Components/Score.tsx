@@ -36,11 +36,11 @@ export const TextStyled = styled.span<ColorType>`
     color: ${({cp}) => cp ? cp : `white` };
 `
 export const ErrorText = styled.h3`
-    color: red;
-    font-size: 40px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
+  color: rgba(253, 42, 42, 0.87);
+  font-size: 40px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 `
 
 

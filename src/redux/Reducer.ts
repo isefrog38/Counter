@@ -26,14 +26,14 @@ export const reducer = (state = initialState , action: AllActionsTypes): Initial
         case ChangeMinValueType : {
                 return {
                     ...state,
-                    min: action.min >= 0 ? action.min : state.min,
+                    min: action.min >= 0 || Number.isInteger(action.min) ? action.min : state.min,
                     error: true
             }
         }
         case ChangeMaxValueType : {
                 return {
                     ...state,
-                    max: action.max >= 0 ? action.max : state.max,
+                    max: action.max >= 0 || Number.isInteger(action.max) ? action.max : state.max,
                     error: true
                 }
         }

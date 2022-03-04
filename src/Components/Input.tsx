@@ -31,13 +31,13 @@ export const InputStyled = styled.input`
   color: white;
   
   &:focus{
-    border: 1px solid white;
-    background-color: white;
-    color: palevioletred;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
   }
   
   .error {
-    background-color: red;
+    background-color: rgba(253, 42, 42, 0.87);
     color: white;
   }
 `
